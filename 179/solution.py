@@ -1,5 +1,3 @@
-import itertools
-import functools
 class Solution(object):
     def largestNumber(self, nums):
         """
@@ -14,6 +12,8 @@ class Solution(object):
             else:
                 return -1
         
-        result = "".join(sorted(list(map(str, nums)), key = functools.cmp_to_key(compare), reverse=True))
-        result = list(itertools.dropwhile(lambda x: x == '0', result[:-1])) + [result[-1]]
-        return ''.join(result)
+        result = "".join(sorted(list(map(str, nums)), cmp = compare, reverse = True))
+        if result[0] == '0':
+            return "0"
+        else:
+            return result
